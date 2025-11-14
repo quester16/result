@@ -1,16 +1,110 @@
-# React + Vite
+# useFetch — кастомный React-хук для выполнения запросов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`useFetch` — простой и универсальный React-хук для выполнения GET-запросов и повторных запросов с параметрами.
 
-Currently, two official plugins are available:
+## 🚀 Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Автоматический первичный запрос при инициализации
+* Состояния загрузки (`isLoading`)
+* Ошибки запроса (`error`)
+* Данные ответа (`data`)
+* Повторный запрос с параметрами через `refetch()`
 
-## React Compiler
+## 📦 Использование
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```jsx
+const {
+  data,
+  isLoading,
+  error,
+  refetch
+} = useFetch('https://jsonplaceholder.typicode.com/posts');
+```
 
-## Expanding the ESLint configuration
+## 🔄 Повторный запрос
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```jsx
+<button onClick={() => refetch({
+  params: { _limit: 3 }
+})}>
+  Перезапросить
+</button>
+```
+
+## 🧩 Пример структуры данных
+
+```js
+[
+  {
+    "id": 1,
+    "title": "Post title",
+    "body": "Post description"
+  }
+]
+```
+
+## 📌 Возвращаемые значения
+
+| Поле        | Тип              | Описание                                                       |
+| ----------- | ---------------- | -------------------------------------------------------------- |
+| `data`      | `any`            | Данные ответа. Если запрос завершился ошибкой — всегда `null`. |
+| `isLoading` | `boolean`        | Показывает, выполняется ли сейчас запрос.                      |
+| `error`     | `Error` | `null` | Ошибка запроса, если произошла.                                |
+| `refetch`   | `function`       | Повторный запрос с параметрами.                                |
+
+## ⚙️ Логика внутри хука
+
+```js
+export const useFetch = (url) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const request = await fetch(url);
+        const data = await request.json();
+        setData(data);
+      } catch (e) {
+        setError(e);
+        setData(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  async function refetch({ params }) {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const request = await fetch(url + '?' + new URLSearchParams(params));
+      const data = await request.json();
+      setData(data);
+    } catch (e) {
+      setError(e);
+      setData(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return {
+    data: error ? null : data,
+    isLoading,
+    error,
+    refetch
+  };
+};
+```
+
+## 📝 Примечания
+
+* `data` всегда сбрасывается в `null`, если произошла ошибка.
+* Внутри `refetch` и основного запроса логика одинакова.
+* Хук подходит только для GET-запросов — POST/PUT/PATCH можно добавить в расширенной версии.
