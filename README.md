@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# 💾 `useLocalStorage`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Кастомный React хук для удобного управления состоянием, которое синхронизируется с **`localStorage`** браузера.
 
-Currently, two official plugins are available:
+Этот хук позволяет хранить и получать данные из `localStorage` так же, как вы работаете с обычным состоянием React, обеспечивая автоматическое обновление компонента при изменении данных.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🛠️ Установка и Использование
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### **Параметры**
 
-## Expanding the ESLint configuration
+| Имя | Тип | Описание |
+| :--- | :--- | :--- |
+| `key` | `string` | **Обязательный.** Ключ, по которому данные будут храниться в `localStorage`. |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### **Возвращаемое значение**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Хук возвращает массив из двух элементов:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  **`value`**: Текущее значение из `localStorage` (или `null`, если ключ отсутствует).
+2.  **`actions`** (`object`): Объект с методами для управления значением:
+    * **`setItem(value)`**: Функция для сохранения нового значения в `localStorage` и обновления состояния. Значения автоматически сериализуются с помощью `JSON.stringify()`.
+    * **`removeItem()`**: Функция для удаления значения по ключу из `localStorage` и сброса состояния в `null`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### **Пример**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```jsx
+import React from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+function App() {
+  const [value, { setItem, removeItem }] = useLocalStorage("some-key");
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+  return (
+    <div>
+      <p>Значение из LocalStorage: {value}</p>
+      <div>
+        <button onClick={() => setItem("new storage value")}>
+          Задать значение
+        </button>
+        <button onClick={() => removeItem()}>Удалить значение</button>
+      </div>
+    </div>
+  );
+}
