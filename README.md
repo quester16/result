@@ -6,7 +6,6 @@
 
 ## 📥 Код хука (Файл `useHover.js`)
 
-**Важное исправление:** В функции очистки `useEffect` в исходном коде была ошибка (дважды использовано `removeEventListener("mouseover")`). Ниже представлен исправленный и рабочий код:
 
 ```jsx
 import { useEffect, useRef, useState } from "react";
@@ -25,18 +24,16 @@ export const useHover = () => {
   useEffect(() => {
     const element = ref.current;
 
-    // Проверка, чтобы избежать ошибок, если элемент еще не привязан
     if (!element) return;
 
     element.addEventListener("mouseover", handleMouseOver);
     element.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      // Корректная очистка слушателей событий
       element.removeEventListener("mouseover", handleMouseOver);
       element.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []); // Пустой массив зависимостей гарантирует, что эффект запускается только один раз
+  }, []); 
 
   return { hovered, ref };
 };
