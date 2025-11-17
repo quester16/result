@@ -1,16 +1,43 @@
-# React + Vite
+# 🖱️ `useHover` - Кастомный хук для отслеживания состояния наведения
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот кастомный хук React позволяет легко отслеживать, находится ли курсор мыши над элементом DOM. Он возвращает **состояние** наведения (`hovered`) и **ссылку** (`ref`), которую нужно привязать к элементу, наведение на который вы хотите отслеживать.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📥 Код хука (Файл `useHover.js`)
 
-## React Compiler
+**Важное исправление:** В функции очистки `useEffect` в исходном коде была ошибка (дважды использовано `removeEventListener("mouseover")`). Ниже представлен исправленный и рабочий код:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```jsx
+import { useEffect, useRef, useState } from "react";
 
-## Expanding the ESLint configuration
+export const useHover = () => {
+  const ref = useRef(null);
+  const [hovered, setHovered] = useState(false);
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  const handleMouseOver = () => {
+    setHovered(true);
+  };
+  const handleMouseOut = () => {
+    setHovered(false);
+  };
+
+  useEffect(() => {
+    const element = ref.current;
+
+    // Проверка, чтобы избежать ошибок, если элемент еще не привязан
+    if (!element) return;
+
+    element.addEventListener("mouseover", handleMouseOver);
+    element.addEventListener("mouseout", handleMouseOut);
+
+    return () => {
+      // Корректная очистка слушателей событий
+      element.removeEventListener("mouseover", handleMouseOver);
+      element.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, []); // Пустой массив зависимостей гарантирует, что эффект запускается только один раз
+
+  return { hovered, ref };
+};
+```
