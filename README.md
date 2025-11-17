@@ -25,18 +25,16 @@ export const useHover = () => {
   useEffect(() => {
     const element = ref.current;
 
-    // Проверка, чтобы избежать ошибок, если элемент еще не привязан
     if (!element) return;
 
     element.addEventListener("mouseover", handleMouseOver);
     element.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      // Корректная очистка слушателей событий
       element.removeEventListener("mouseover", handleMouseOver);
       element.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []); // Пустой массив зависимостей гарантирует, что эффект запускается только один раз
+  }, []); 
 
   return { hovered, ref };
 };
