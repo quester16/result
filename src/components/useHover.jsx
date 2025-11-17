@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export const useHover = () => {
-  const ref = useRef();
+  const ref = useRef(null);
   const [hovered, setHovered] = useState(false);
 
   const handleMouseOver = () => {
@@ -13,6 +13,8 @@ export const useHover = () => {
 
   useEffect(() => {
     const element = ref.current;
+
+    if (!element) return;
 
     element.addEventListener("mouseover", handleMouseOver);
     element.addEventListener("mouseout", handleMouseOut);
