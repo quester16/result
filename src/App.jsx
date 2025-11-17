@@ -1,11 +1,11 @@
-import { useHover } from "./components/useHover";
+import { useViewportSize } from "./components/useViewportSize";
 
 function App() {
-  const { hovered, ref } = useHover();
+  const { height, width } = useViewportSize();
 
   return (
-    <div ref={ref}>
-      {hovered ? "На меня навели мышку" : "Наведи мышкой на меня"}
+    <div>
+      Width: {width}, height: {height}
     </div>
   );
 }
