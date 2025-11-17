@@ -21,7 +21,7 @@ export const useHover = () => {
 
     return () => {
       element.removeEventListener("mouseover", handleMouseOver);
-      element.removeEventListener("mouseover", handleMouseOut);
+      element.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
 
