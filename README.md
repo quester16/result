@@ -1,40 +1,29 @@
-# 🖱️ `useHover` - Кастомный хук для отслеживания состояния наведения
+# `useViewPort` - Кастомный хук для отслеживания состояния размера видимой области браузера
 
-Этот кастомный хук React позволяет легко отслеживать, находится ли курсор мыши над элементом DOM. Он возвращает **состояние** наведения (`hovered`) и **ссылку** (`ref`), которую нужно привязать к элементу, наведение на который вы хотите отслеживать.
+Этот кастомный хук React позволяет легко отслеживать текущий размер **ширины** и **высоты** браузера вне зависимости какие были внесены стили для **body**, `{width, height}` - возвращают нам видимую область браузера.
 
 ---
 
 ## 📥 Код хука (Файл `useHover.js`)
 
-
 ```jsx
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-export const useHover = () => {
-  const ref = useRef(null);
-  const [hovered, setHovered] = useState(false);
+export const useViewportSize = () => {
+  const [rects, setRects] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
-  const handleMouseOver = () => {
-    setHovered(true);
-  };
-  const handleMouseOut = () => {
-    setHovered(false);
+  const handleResize = () => {
+    setRects({ width: window.innerWidth, height: window.innerHeight });
   };
 
   useEffect(() => {
-    const element = ref.current;
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    if (!element) return;
-
-    element.addEventListener("mouseover", handleMouseOver);
-    element.addEventListener("mouseout", handleMouseOut);
-
-    return () => {
-      element.removeEventListener("mouseover", handleMouseOver);
-      element.removeEventListener("mouseout", handleMouseOut);
-    };
-  }, []); 
-
-  return { hovered, ref };
+  return { height: rects.height, width: rects.width };
 };
 ```
