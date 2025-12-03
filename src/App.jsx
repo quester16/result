@@ -1,11 +1,9 @@
-import { useViewportSize } from "./components/useViewportSize";
+import { AuthPage } from "./components/auth";
 
 function App() {
-  const { height, width } = useViewportSize();
-
   return (
     <div>
-      Width: {width}, height: {height}
+      <AuthPage />
     </div>
   );
 }
