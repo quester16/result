@@ -1,0 +1,67 @@
+.content {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 20px;
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.card h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+.card p {
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+.image {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ✅ Адаптив */
+@media (max-width: 600px) {
+  .card {
+    padding: 16px;
+  }
+
+  .card h4 {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "name": "Naruto Uzumaki",
+    "about": [
+      "Главный герой серии и джинчурики Девятихвостого лиса Курамы.",
+      "Обладает несгибаемой волей и способностью вдохновлять окружающих.",
+      "Со временем становится одним из сильнейших шиноби мира."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Hokage",
+      "notable_jutsu": ["Rasengan", "Sage Mode", "Kurama Chakra"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Naruto_Uzumaki.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Naruto_Uzumaki_1.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sasuke Uchiha",
+    "about": [
+      "Один из сильнейших представителей клана Учиха.",
+      "Прошёл путь от мстителя до защитника мира.",
+      "Обладает уникальными способностями глаза."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Elite Shinobi",
+      "notable_jutsu": ["Chidori", "Sharingan", "Susanoo"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Sasuke_Uchiha.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Sasuke_Uchiha_1.webp"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Sakura Haruno",
+    "about": [
+      "Одна из лучших медицинских ниндзя своего поколения.",
+      "Ученица Пятого Хокаге Цунадэ.",
+      "Обладает огромной физической силой и интеллектом."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Medical Ninja",
+      "notable_jutsu": ["Medical Ninjutsu", "Super Strength"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Sakura_Haruno.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Sakura_Haruno_1.webp"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Kakashi Hatake",
+    "about": [
+      "Легендарный ниндзя Конохи и наставник команды 7.",
+      "Известен как Копирующий ниндзя.",
+      "Обладал Шаринганом и выдающимися тактическими навыками."
+    ],
+    "info": {
+      "age": "adult",
+      "village": "Konohagakure",
+      "rank": "Jonin / Hokage",
+      "notable_jutsu": ["Chidori", "Lightning Blade"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Kakashi_Hatake.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Kakashi_Hatake_1.webp"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Itachi Uchiha",
+    "about": [
+      "Гениальный шиноби клана Учиха с трагической судьбой.",
+      "Пожертвовал собой ради мира и Конохи.",
+      "Один из сильнейших мастеров гендзюцу."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Anbu",
+      "notable_jutsu": ["Tsukuyomi", "Amaterasu", "Susanoo"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Itachi_Uchiha.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Itachi_Uchiha_1.webp"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Shikamaru Nara",
+    "about": [
+      "Самый умный шиноби своего поколения.",
+      "Выдающийся стратег и тактик.",
+      "Не любит напрягаться, но всегда доводит дело до конца."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Jonin",
+      "notable_jutsu": ["Shadow Imitation Technique"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Shikamaru_Nara.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Shikamaru_Nara_1.webp"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Hinata Hyuga",
+    "about": [
+      "Наследница клана Хьюга.",
+      "Мягкая и добрая, но решительная в бою.",
+      "Вдохновлялась Наруто с детства."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Konohagakure",
+      "rank": "Chunin",
+      "notable_jutsu": ["Byakugan", "Gentle Fist"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Hinata_Hyuga.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Hinata_Hyuga_1.webp"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Gaara",
+    "about": [
+      "Бывший джинчурики Шукаку.",
+      "Преодолел одиночество и стал лидером.",
+      "Сильнейший пользователь песка."
+    ],
+    "info": {
+      "age": "teen → adult",
+      "village": "Sunagakure",
+      "rank": "Kazekage",
+      "notable_jutsu": ["Sand Manipulation"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Gaara.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Gaara_1.webp"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Madara Uchiha",
+    "about": [
+      "Легендарный основатель клана Учиха.",
+      "Один из самых сильных шиноби в истории.",
+      "Стремился навязать миру свой порядок."
+    ],
+    "info": {
+      "age": "legendary",
+      "village": "Konohagakure",
+      "rank": "Legendary Shinobi",
+      "notable_jutsu": ["Rinnegan", "Susanoo", "Limbo"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Madara_Uchiha.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Madara_Uchiha_1.webp"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Jiraiya",
+    "about": [
+      "Один из трёх легендарных саннинов.",
+      "Наставник Наруто и великий шиноби.",
+      "Известен своим юмором и мудростью."
+    ],
+    "info": {
+      "age": "adult",
+      "village": "Konohagakure",
+      "rank": "Sannin",
+      "notable_jutsu": ["Rasengan", "Toad Summoning"]
+    },
+    "images": [
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Jiraiya.webp",
+      "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Jiraiya_1.webp"
+    ]
+  }
+]

@@ -1,73 +1,155 @@
-# React + TypeScript + Vite
+# Naruto Characters Encyclopedia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для просмотра информации о персонажах из аниме Naruto. Построено на React + TypeScript + Vite с маршрутизацией через React Router.
 
-Currently, two official plugins are available:
+## 📋 Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Это интерактивное приложение, которое позволяет пользователям:
 
-## React Compiler
+- Просматривать список всех персонажей Naruto
+- Читать детальную информацию о каждом персонаже
+- Узнать основные характеристики (возраст, село, ранг, техники)
+- Просматривать изображения персонажей
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🏗️ Структура проекта
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/         # Переиспользуемые компоненты
+│   └── layout/        # Layout компоненты
+├── pages/             # Страницы приложения
+│   ├── Home/          # Главная страница
+│   ├── Categories/    # Список всех персонажей
+│   └── SingleCategory/ # Детальная страница персонажа
+├── data/              # Данные приложения
+│   ├── data.json      # JSON с информацией о персонажах
+│   └── data.ts        # TypeScript типы данных
+├── router/            # Конфигурация маршрутизации
+│   ├── Router.tsx     # Компонент маршрутизатора
+│   ├── routes.tsx     # Определение маршрутов
+│   └── lib/publicRoutes.ts # Константы путей
+└── App.tsx            # Главный компонент приложения
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📄 Структура данных персонажа
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+Каждый персонаж содержит следующую информацию:
+
+```typescript
+interface Content {
+  id: number;
+  name: string;
+  about: string[]; // Описание персонажа
+  images: string[]; // URL изображений
+  info: {
+    age: string; // Возраст
+    village: string; // Село/Деревня
+    rank: string; // Ранг ниндзя
+    notable_jutsu: string[]; // Известные техники
+  };
+}
+```
+
+### Пример персонажа:
+
+```json
+{
+  "id": 1,
+  "name": "Naruto Uzumaki",
+  "about": [
+    "Главный герой серии и джинчурики Девятихвостого лиса Курамы.",
+    "Обладает несгибаемой волей и способностью вдохновлять окружающих."
+  ],
+  "info": {
+    "age": "teen → adult",
+    "village": "Konohagakure",
+    "rank": "Hokage",
+    "notable_jutsu": ["Rasengan", "Sage Mode", "Kurama Chakra"]
+  }
+}
+```
+
+## 🛣️ Маршруты приложения
+
+- `/` - Главная страница
+- `/categories` - Список всех персонажей
+- `/category/:id` - Детальная информация о персонаже
+
+## 🚀 Установка и запуск
+
+### Зависимости
+
+- React 19.2
+- React Router DOM 6.30
+- TypeScript
+- Vite
+- SASS
+
+### Скрипты
+
+```bash
+# Запуск dev сервера
+npm run dev
+
+# Сборка для продакшена
+npm run build
+
+# Проверка кода
+npm run lint
+
+# Превью собранного проекта
+npm run preview
+```
+
+## 🎨 Стили
+
+Проект использует SASS (SCSS) для стилизации с CSS Modules для избежания конфликтов имён классов.
+
+Пример структуры стилей:
+
+```
+styles.module.scss - локальные стили для каждого компонента
+```
+
+## 🛠️ Технологический стек
+
+- **React 19** - UI библиотека
+- **TypeScript** - Типизация кода
+- **Vite** - Сборщик и dev сервер
+- **React Router** - Маршрутизация
+- **SASS** - Препроцессор CSS
+- **ESLint** - Линтер кода
+
+## 📝 Примечание
+
+Проект использует локальное хранилище (Local Storage) для сохранения состояния (текущая ветка: `local-storage`).
+
+---
+
+Версия: 0.0.0
 import reactDom from 'eslint-plugin-react-dom'
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
+globalIgnores(['dist']),
+{
+files: ['**/*.{ts,tsx}'],
+extends: [
+// Other configs...
+// Enable lint rules for React
+reactX.configs['recommended-typescript'],
+// Enable lint rules for React DOM
+reactDom.configs.recommended,
+],
+languageOptions: {
+parserOptions: {
+project: ['./tsconfig.node.json', './tsconfig.app.json'],
+tsconfigRootDir: import.meta.dirname,
+},
+// other options...
+},
+},
 ])
+
+```
+
 ```
