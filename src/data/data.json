@@ -10,7 +10,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Hokage",
+      "rank": ["Hokage"],
       "notable_jutsu": ["Rasengan", "Sage Mode", "Kurama Chakra"]
     },
     "images": [
@@ -29,7 +29,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Elite Shinobi",
+      "rank": ["Elite Shinobi"],
       "notable_jutsu": ["Chidori", "Sharingan", "Susanoo"]
     },
     "images": [
@@ -48,7 +48,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Medical Ninja",
+      "rank": ["Medical Ninja"],
       "notable_jutsu": ["Medical Ninjutsu", "Super Strength"]
     },
     "images": [
@@ -67,7 +67,7 @@
     "info": {
       "age": "adult",
       "village": "Konohagakure",
-      "rank": "Jonin / Hokage",
+      "rank": ["Jonin", "Hokage"],
       "notable_jutsu": ["Chidori", "Lightning Blade"]
     },
     "images": [
@@ -86,7 +86,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Anbu",
+      "rank": ["Anbu"],
       "notable_jutsu": ["Tsukuyomi", "Amaterasu", "Susanoo"]
     },
     "images": [
@@ -105,7 +105,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Jonin",
+      "rank": ["Jonin"],
       "notable_jutsu": ["Shadow Imitation Technique"]
     },
     "images": [
@@ -124,7 +124,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Konohagakure",
-      "rank": "Chunin",
+      "rank": ["Chunin"],
       "notable_jutsu": ["Byakugan", "Gentle Fist"]
     },
     "images": [
@@ -143,7 +143,7 @@
     "info": {
       "age": "teen → adult",
       "village": "Sunagakure",
-      "rank": "Kazekage",
+      "rank": ["Kazekage"],
       "notable_jutsu": ["Sand Manipulation"]
     },
     "images": [
@@ -162,7 +162,7 @@
     "info": {
       "age": "legendary",
       "village": "Konohagakure",
-      "rank": "Legendary Shinobi",
+      "rank": ["Legendary Shinobi"],
       "notable_jutsu": ["Rinnegan", "Susanoo", "Limbo"]
     },
     "images": [
@@ -181,12 +181,35 @@
     "info": {
       "age": "adult",
       "village": "Konohagakure",
-      "rank": "Sannin",
+      "rank": ["Sannin"],
       "notable_jutsu": ["Rasengan", "Toad Summoning"]
     },
     "images": [
       "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Jiraiya.webp",
       "https://gkbzmcahsvowlfjslvnm.supabase.in/storage/v1/object/public/characters/Jiraiya_1.webp"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Tsunade",
+    "about": [
+      "Одна из легендарных саннинов и Пятая Хокаге Конохи.",
+      "Мастер медицинских техник и невероятно сильная в бою.",
+      "Известна своей решимостью, лидерскими качествами и умением принимать сложные решения."
+    ],
+    "info": {
+      "age": "adult",
+      "village": "Konohagakure",
+      "rank": ["Sannin", "Hokage"],
+      "notable_jutsu": [
+        "Medical Ninjutsu",
+        "Super Strength",
+        "Creation Rebirth"
+      ]
+    },
+    "images": [
+      "https://wiki.jcdn.ru/w/images/e/e1/Tsunade_1.png",
+      "https://wiki.jcdn.ru/w/images/a/a5/Tsunade5.jpg"
     ]
   }
 ]

@@ -45,7 +45,7 @@ export const SingleCategory = () => {
             </li>
             <li>
               <span>Ранг:</span>
-              {currentCharacter?.info.rank}
+              {currentCharacter?.info.rank.join(", ")}
             </li>
             <li>
               <span>Деревня:</span>

@@ -11,6 +11,6 @@ export interface Content {
 export interface Info {
   age: string;
   village: string;
-  rank: string;
+  rank: string[];
   notable_jutsu: string[];
 }
