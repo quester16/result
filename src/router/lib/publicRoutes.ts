@@ -4,3 +4,7 @@ export const publicRoute = {
   category: "/category/:name",
   categoryByAlias: (alias: string): string => `/category/${alias}`,
 };
+
+export const authRoutes = {
+  login: "/login",
+};
